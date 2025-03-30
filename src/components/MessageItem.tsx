@@ -1,23 +1,16 @@
-interface MessageItemProps {
-    user: string;
-    text: string;
-    media?: {
-        url: string;
-        type: string;
-    };
-}
+import Message from "../interfaces/IMessage";
 
-const MessageItem = ({ user, text, media }: MessageItemProps) => {
+const MessageItem = ({message} : {message: Message}) => {
     return (
         <div className="message-item">
-            <strong>{user}:</strong> {text}
-            {media && (
+            <strong>{message.user}:</strong> {message.text}
+            {message.media && (
                 <div>
-                {media.type === "image" ? (
-                    <img src={media.url} alt="attachment" style={{ maxWidth: "200px", borderRadius: "15px" }} />
+                {message.media.type === "image" ? (
+                    <img src={message.media.url} alt="attachment" style={{ maxWidth: "200px", borderRadius: "15px" }} />
                 ) : (
                     <video controls style={{ maxWidth: "200px", borderRadius: "15px"  }}>
-                        <source src={media.url} />
+                        <source src={message.media.url} />
                     </video>
                 )}
                 </div>

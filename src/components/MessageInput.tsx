@@ -3,18 +3,18 @@ import UploadButton from "./UploadButton";
 import EmojiPickerComponent from "./EmojiPicker";
 
 interface MessageInputProps {
-  input: string;
-  setInput: React.Dispatch<React.SetStateAction<string>>;
-  sendMessage: (file?: File) => void;
+  sendMessage: (text: string, file?: File) => void;
 }
 
-const MessageInput: React.FC<MessageInputProps> = ({ input, setInput, sendMessage }) => {
+const MessageInput: React.FC<MessageInputProps> = ({ sendMessage }) => {
+  const [input, setInput] = useState<string>("")
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      sendMessage();
+    if (e.key === "Enter" && input) {
+      sendMessage(input);
       setSelectedFile(null);
+      setInput("");
     }
   };
 
@@ -23,10 +23,10 @@ const MessageInput: React.FC<MessageInputProps> = ({ input, setInput, sendMessag
     const isValidFile = file && /^(video|image)\//.test(file.type);
 
     if (isValidFile) {
-        setSelectedFile(file);
-        alert(`Выбран файл: ${file.name}`);
+      setSelectedFile(file);
+      alert(`Выбран файл: ${file.name}`);
     } else {
-        alert("Возможна загрузка только изображений и видео");
+      alert("Возможна загрузка только изображений и видео");
     }
 
     e.target.value = "";
@@ -34,11 +34,16 @@ const MessageInput: React.FC<MessageInputProps> = ({ input, setInput, sendMessag
 
   const handleSend = () => {
     if (selectedFile) {
-      sendMessage(selectedFile);
+      sendMessage(input, selectedFile);
     } else {
-      sendMessage();
+      sendMessage(input);
     }
     setSelectedFile(null);
+    setInput("");
+  };
+
+  const handleSelectEmoji = (emoji: string) => {
+    setInput((prevInput) => prevInput + emoji); 
   };
 
   return (
@@ -52,7 +57,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ input, setInput, sendMessag
           placeholder="Введите сообщение..."
           onKeyDown={handleKeyDown}
         />
-        <EmojiPickerComponent setSelectedEmoji={(emoji) => {}} setInput={setInput} />
+        <EmojiPickerComponent onSelectEmoji={handleSelectEmoji} />
       </div>
       <button onClick={handleSend} className="btn">Отправить</button>
     </div>

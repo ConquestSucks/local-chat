@@ -2,16 +2,14 @@ import { useState } from 'react';
 import EmojiPicker from 'emoji-picker-react';
 
 interface EmojiPickerComponentProps {
-  setSelectedEmoji: React.Dispatch<React.SetStateAction<string>>;
-  setInput: React.Dispatch<React.SetStateAction<string>>;
+  onSelectEmoji: (emoji: string) => void;
 }
 
-const EmojiPickerComponent: React.FC<EmojiPickerComponentProps> = ({ setSelectedEmoji, setInput }) => {
+const EmojiPickerComponent: React.FC<EmojiPickerComponentProps> = ({ onSelectEmoji }) => {
   const [showPicker, setShowPicker] = useState(false);
 
   const handleEmojiClick = (emoji: { emoji: string }) => {
-    setSelectedEmoji(emoji.emoji);
-    setInput((prevInput) => prevInput + emoji.emoji); 
+    onSelectEmoji(emoji.emoji);
     setShowPicker(false);
   };
 
