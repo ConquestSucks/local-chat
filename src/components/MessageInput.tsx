@@ -7,7 +7,7 @@ interface MessageInputProps {
 }
 
 const MessageInput: React.FC<MessageInputProps> = ({ sendMessage }) => {
-  const [input, setInput] = useState<string>("")
+  const [input, setInput] = useState<string>("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -43,7 +43,7 @@ const MessageInput: React.FC<MessageInputProps> = ({ sendMessage }) => {
   };
 
   const handleSelectEmoji = (emoji: string) => {
-    setInput((prevInput) => prevInput + emoji); 
+    setInput((prevInput) => prevInput + emoji);
   };
 
   return (
@@ -59,7 +59,9 @@ const MessageInput: React.FC<MessageInputProps> = ({ sendMessage }) => {
         />
         <EmojiPickerComponent onSelectEmoji={handleSelectEmoji} />
       </div>
-      <button onClick={handleSend} className="btn">Отправить</button>
+      <button onClick={handleSend} className="btn">
+        Отправить
+      </button>
     </div>
   );
 };
