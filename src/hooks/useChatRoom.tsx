@@ -1,40 +1,37 @@
 import { useState, useEffect } from "react";
 import Message from "../interfaces/IMessage";
-import { ChatStorageService } from "../utils/ChatStorageService";
+import { ChatStorageService } from "../service/ChatStorageService";
+import {
+  appendMessage,
+  createMessage,
+  processFile,
+} from "../utils/chatHelpers";
 
 export const useChatRoom = (username: string, room: string) => {
-    const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
 
-    useEffect(() => {
-        if (room) {
-            setMessages(ChatStorageService.loadMessages(room));
-        }
-    }, [room]);
+  useEffect(() => {
+    if (!room) return;
 
-    const sendMessage = (text: string, file?: File) => {
-        if (!text.trim() && !file) return;
+    setMessages(ChatStorageService.loadMessages(room));
 
-        let media;
-        if (file) {
-            media = {
-                url: URL.createObjectURL(file),
-                type: file.type.startsWith("image") ? "image" : "video",
-            };
-        }
+    const unsubscribe = ChatStorageService.subscribe(room, setMessages);
+    return unsubscribe;
+  }, [room]);
 
-        const newMessage: Message = {
-            id: new Date().toISOString(),
-            user: username,
-            text,
-            media,
-        };
+  const sendMessage = (text: string, file?: File) => {
+    if (!text.trim() && !file) return;
 
-        setMessages((prev) => {
-            const updatedMessages = [...prev, newMessage];
-            ChatStorageService.saveMessages(room, updatedMessages);
-            return updatedMessages;
-        });
-    };
+    if (file) {
+      processFile(file, (media) => {
+        const newMessage = createMessage(username, text, media);
+        setMessages((prev) => appendMessage(room, prev, newMessage));
+      });
+    } else {
+      const newMessage = createMessage(username, text);
+      setMessages((prev) => appendMessage(room, prev, newMessage));
+    }
+  };
 
-    return { messages, sendMessage };
+  return { messages, sendMessage };
 };
