@@ -46,7 +46,7 @@
   }
 }
 
-@media only screen and (max-height: 300px) {
+@media only screen and (max-height: 500px) {
   .chat-form {
     min-height: 100vh;
     min-width: 100vw;
