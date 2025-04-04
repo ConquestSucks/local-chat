@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 30vw;
-  height: 20vh;
+  min-height: min(30vh, 400px);
+  min-width: fit-content;
   border-radius: 15px;
   gap: 10px;
   background-color: #171717;
@@ -43,6 +43,13 @@
 
   .chat-form > div {
     flex-direction: column;
+  }
+}
+
+@media only screen and (max-height: 300px) {
+  .chat-form {
+    min-height: 100vh;
+    min-width: 100vw;
   }
 }
 
