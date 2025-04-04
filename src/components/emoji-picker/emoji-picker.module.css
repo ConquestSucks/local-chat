@@ -1,0 +1,33 @@
+.emoji-btn-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+}
+
+.emoji {
+    position: absolute;
+    bottom: 150%;
+    left: 0;
+    z-index: 100;
+}
+
+@media only screen and (max-width: 1300px) {
+    .emoji {
+        left: -280px;
+    }
+}
+
+
+@media (max-width: 410px) {
+    .emoji {
+        position: fixed;
+        bottom: -150px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90vw;
+        max-width: 360px;
+        
+        border-radius: 12px;
+    }
+}

@@ -1,5 +1,8 @@
 import { useState } from "react";
 import EmojiPicker from "emoji-picker-react";
+import { Theme } from "emoji-picker-react";
+import styles from "./emoji-picker.module.css";
+import EmoticonsButton from "../ui/emoticons-button/EmoticonsButton";
 
 interface EmojiPickerComponentProps {
   onSelectEmoji: (emoji: string) => void;
@@ -12,20 +15,17 @@ const EmojiPickerComponent: React.FC<EmojiPickerComponentProps> = ({
 
   const handleEmojiClick = (emoji: { emoji: string }) => {
     onSelectEmoji(emoji.emoji);
-    setShowPicker(false);
   };
 
   return (
-    <div className="emoji-btn-container">
-      <button onClick={() => setShowPicker(!showPicker)}>
-        {showPicker ? "😡" : "🥰"}
-      </button>
+    <div className={styles["emoji-btn-container"]}>
+      <EmoticonsButton onClick={() => setShowPicker(!showPicker)} />
       {showPicker && (
-        <div className="emoji">
+        <div className={styles.emoji}>
           <EmojiPicker
             onEmojiClick={handleEmojiClick}
-            searchDisabled={true}
             skinTonesDisabled={true}
+            theme={"auto" as Theme}
           />
         </div>
       )}

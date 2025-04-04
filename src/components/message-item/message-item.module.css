@@ -1,0 +1,153 @@
+.container {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.3s forwards;
+    width: 100%;
+}
+
+.data-container {
+    display: flex;
+    max-width: 80%;
+    gap: 10px;
+    align-items: center;
+}
+
+.data-container:hover .reply-button {
+    visibility: visible;
+    transition: 0.3s;
+    background-color: white;
+}
+
+.owner {
+    justify-content: flex-end;
+}
+
+.owner .data-container {
+    flex-direction: row-reverse;
+}
+
+.owner .avatar {
+    display: none;
+}
+
+.avatar {
+    padding: 5px;
+    min-width: 32px;
+    height: 32px;
+    text-align: center;
+    font-weight: 500;
+    border-radius: 30px;
+}
+
+.data-wrap {
+    display: flex;
+    box-sizing: border-box;
+    gap: 5px;
+    align-items: end;
+    background-color: #282828;
+    padding: 10px;
+    border-radius: 15px;
+    min-width: 150px;
+}
+
+.reply-button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 100%;
+}
+
+.owner .reply-button {
+    transform: rotateY(180deg);
+}
+
+.reply-button {
+    visibility: hidden;
+}
+
+.data {
+    display: flex;
+    row-gap: 5px;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.data-wrap div img,
+video {
+    max-width: 150px;
+    border-radius: 10px;
+}
+
+.name {
+    font-size: medium;
+    font-weight: 600;
+}
+
+.text {
+    font-size: small;
+    word-break: break-word;
+    font-weight: 500;
+    overflow-wrap: break-word;
+}
+
+.time {
+    flex-shrink: 0;
+    text-align: right;
+    color: grey;
+    opacity: 0.5;
+    height: 13px;
+    font-size: x-small;
+    margin-left: auto;
+}
+
+@media (max-width: 480px) {
+    .data-container {
+        max-width: 95%;
+    }
+
+    .data-wrap {
+        font-size: smaller;
+    }
+}
+
+@media (max-width: 1000px) {
+    .data-wrap {
+        max-width: min(70%, 300px);
+        font-size: smaller;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .data-wrap {
+        background-color: #E3F0FE;
+    }
+
+    .name {
+        color: #4773A4;
+    }
+
+    .text {
+        color: #757575;
+    }
+
+    .reply-button {
+        background-color: #EAF4FE;
+    }
+
+    .data-container:hover .reply-button {
+        background-color: #EAF4FE;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

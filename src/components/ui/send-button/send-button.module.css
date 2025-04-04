@@ -1,0 +1,21 @@
+.send {
+    width: 30px;
+    height: 30px;
+    fill: #757575;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.send:hover {
+    fill: white;
+}
+
+@media (prefers-color-scheme: light) {
+    .send {
+        fill: #F8FAFC;
+    }
+
+    .send:hover {
+        fill: #9AA6B2;
+    }
+}

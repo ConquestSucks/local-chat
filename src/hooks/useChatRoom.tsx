@@ -7,8 +7,9 @@ import {
   processFile,
 } from "../utils/chatHelpers";
 
-export const useChatRoom = (username: string, room: string) => {
+export const useChatRoom = (username: string, room: string, color: string) => {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [replyTo, setReplyTo] = useState<Message | null>(null);
 
   useEffect(() => {
     if (!room) return;
@@ -19,19 +20,44 @@ export const useChatRoom = (username: string, room: string) => {
     return unsubscribe;
   }, [room]);
 
-  const sendMessage = (text: string, file?: File) => {
+  const sendMessage = (
+    text: string,
+    date: string,
+    file?: File,
+    replyTo?: string
+  ) => {
     if (!text.trim() && !file) return;
 
+    const messageId = new Date().toISOString();
+
     if (file) {
-      processFile(file, (media) => {
-        const newMessage = createMessage(username, text, media);
+      processFile(file, messageId, (media) => {
+        const newMessage = createMessage(
+          messageId,
+          username,
+          color,
+          text,
+          date,
+          media,
+          replyTo
+        );
         setMessages((prev) => appendMessage(room, prev, newMessage));
+        setReplyTo(null);
       });
     } else {
-      const newMessage = createMessage(username, text);
+      const newMessage = createMessage(
+        messageId,
+        username,
+        color,
+        text,
+        date,
+        undefined,
+        replyTo
+      );
       setMessages((prev) => appendMessage(room, prev, newMessage));
+      setReplyTo(null);
     }
   };
 
-  return { messages, sendMessage };
+  return { messages, sendMessage, replyTo, setReplyTo };
 };

@@ -1,0 +1,22 @@
+.emoji {
+    cursor: pointer;
+    transition: 0.25s;
+    width: 27px;
+    height: 27px;
+    fill: #757575;
+    transition: 0.3s;
+}
+
+.emoji:hover {
+    fill: white;
+}
+
+@media (prefers-color-scheme: light) {
+    .emoji {
+        fill: #F8FAFC;
+    }
+
+    .emoji:hover {
+        fill: #9AA6B2;
+    }
+}

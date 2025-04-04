@@ -1,0 +1,50 @@
+.message-input {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    padding: 5px;
+    background-color: #303030;
+    border-radius: 10px;
+}
+
+.reply {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.edit {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.edit div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (prefers-color-scheme: light) {
+    .message-container {
+        background-color: #BCCCDC;
+        color: #D9EAFD;
+    }
+
+    .message-input input[type=text] {
+        color: #F4F7F9;
+    }
+    
+    .message-input input[type=text]::placeholder {
+        color: #9AA6B2;
+        font-size: small;
+    }
+}

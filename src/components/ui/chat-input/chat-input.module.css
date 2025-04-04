@@ -1,0 +1,29 @@
+.chat {
+    resize: none;
+    overflow-y: hidden;
+    width: 100%;
+    line-height: 20px;
+    font-size: medium;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    word-break: break-word;
+    padding: 8px 0px;
+
+    font-family: inherit;
+    font-weight: inherit;
+    color: inherit;
+}
+
+.chat::-webkit-scrollbar {
+    display: none;
+}
+
+
+@media (prefers-color-scheme: light) {
+    .chat::placeholder {
+        color: #EAF4FE;
+    }
+}

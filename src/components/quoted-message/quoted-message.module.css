@@ -1,0 +1,61 @@
+.quoted {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 1;
+    overflow: hidden; 
+    padding-left: 3px;
+}
+
+.quoted div:first-child {
+    width: 3px;
+    flex-shrink: 0;
+    background-color: white;
+}
+
+.quoted div:last-child {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-shrink: 1;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.quoted span:first-child {
+    font-size: medium;
+    font-weight: 600;
+}
+
+.quoted span:last-child {
+    font-size: small;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block; 
+    max-width: 100%;
+}
+
+@media (prefers-color-scheme: light) {
+    .quoted span:first-child {
+        color: #4773A4;
+        opacity: 0.7;
+    }
+    
+    .quoted span:last-child {
+        color: #4773A4;
+        opacity: 0.7;
+    }
+
+    .quoted div:first-child {
+        width: 3px;
+        flex-shrink: 0;
+        background-color: #9AA6B2;
+    }
+}
+
+@media (max-width: 480px) {
+    .quoted span {
+        font-size: smaller;
+    }
+}

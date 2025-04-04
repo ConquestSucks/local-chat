@@ -1,0 +1,23 @@
+.login {
+    outline: none;
+    border: none;
+    font-weight: bold;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #303030;
+}
+
+
+@media (prefers-color-scheme: light) {
+    .login {
+        background-color: #9AA6B2;
+        color: #D9EAFD;
+    }
+
+    .login::placeholder {
+        color: #D9EAFD;
+        opacity: 0.5;
+    }
+}

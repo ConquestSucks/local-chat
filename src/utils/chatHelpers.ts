@@ -1,22 +1,35 @@
 import Message from "../interfaces/IMessage";
 import { ChatStorageService } from "../service/ChatStorageService";
 
-export const createMessage = (user: string, text: string, media?: { url: string; type: string }): Message => ({
-    id: new Date().toISOString(),
+export const createMessage = (
+    id: string,
+    user: string,
+    color: string,
+    text: string,
+    date: string,
+    media?: { url: string; type: string },
+    replyTo?: string
+): Message => ({
+    id,
     user,
+    color,
     text,
+    date,
     media,
+    replyTo,
 });
 
-export const processFile = (file: File, callback: (media: { url: string; type: string }) => void) => {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-        callback({
-            url: reader.result as string,
-            type: file.type.startsWith("image") ? "image" : "video",
-        });
-    };
-    reader.readAsDataURL(file);
+export const processFile = async (
+    file: File,
+    messageId: string,
+    callback: (media: { url: string; type: string }) => void
+) => {
+    await ChatStorageService.saveMediaBlob(messageId, file);
+
+    callback({
+        url: messageId,
+        type: file.type.startsWith("image") ? "image" : "video"
+    });
 };
 
 export const appendMessage = (room: string, messages: Message[], newMessage: Message): Message[] => {

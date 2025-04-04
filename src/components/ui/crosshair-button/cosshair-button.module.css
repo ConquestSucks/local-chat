@@ -1,0 +1,31 @@
+.upload {
+    width: 30px;
+    height: 30px;
+    min-width: fit-content;
+    min-height: fit-content;
+    fill: #757575;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.upload:hover{
+    fill: white;
+}
+
+.close {
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    transition: 0.3s;
+}
+
+
+@media (prefers-color-scheme: light) {
+    .upload {
+        fill: #F8FAFC;
+    }
+
+    .upload:hover {
+        fill: #9AA6B2;
+    }
+}
