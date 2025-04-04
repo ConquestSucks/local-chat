@@ -11,7 +11,7 @@
   transition: 0.3s;
 }
 
-.chat-form > div {
+.chat-form>div {
   display: flex;
   justify-content: center;
   width: 80%;
@@ -41,7 +41,7 @@
     min-height: 25vh;
   }
 
-  .chat-form > div {
+  .chat-form>div {
     flex-direction: column;
   }
 }
@@ -50,6 +50,7 @@
   .chat-form {
     min-height: 100vh;
     min-width: 100vw;
+    border-radius: 0px;
   }
 }
 
