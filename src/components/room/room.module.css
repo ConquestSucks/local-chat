@@ -1,25 +1,12 @@
-h2 {
-  text-align: center;
-  margin: 0;
-  color: inherit;
-}
-
 .room {
   display: flex;
   width: 35vw;
   justify-content: space-between;
   flex-direction: column;
   height: 100vh;
+  gap: 5px;
   padding: 10px;
   transition: 0.3s
-}
-
-.room-container {
-  display: flex;
-  gap: 10px;
-  height: 90%;
-  flex-direction: column;
-  justify-content: end;
 }
 
 @media only screen and (max-width: 1365px) {
@@ -36,7 +23,5 @@ h2 {
 }
 
 @media (prefers-color-scheme: light) {
-  h2 {
-    color: #9AA6B2;
-  }
+
 }

@@ -86,13 +86,11 @@ video {
 
 .name {
     font-size: medium;
-    font-weight: 600;
 }
 
 .text {
     font-size: small;
     word-break: break-word;
-    font-weight: 500;
     overflow-wrap: break-word;
 }
 
