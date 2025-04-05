@@ -25,6 +25,7 @@ const EmojiPickerComponent: React.FC<EmojiPickerComponentProps> = ({
           <EmojiPicker
             onEmojiClick={handleEmojiClick}
             skinTonesDisabled={true}
+            searchDisabled={true}
             theme={"auto" as Theme}
           />
         </div>

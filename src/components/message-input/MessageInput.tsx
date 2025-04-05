@@ -80,7 +80,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
             onKeyDown={handleKeyDown}
             placeholder="Введите сообщение"
           />
-          <div>
+          <div className={styles["emoji-send-container"]}>
             <EmojiPickerComponent onSelectEmoji={handleSelectEmoji} />
             <SendButton onClick={handleSend} />
           </div>
