@@ -34,9 +34,12 @@
 }
 
 .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 5px;
     min-width: 32px;
-    height: 32px;
+    min-height: 32px;
     text-align: center;
     font-weight: 500;
     border-radius: 30px;
