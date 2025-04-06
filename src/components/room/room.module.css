@@ -1,11 +1,12 @@
 .room {
   display: flex;
   width: 35vw;
-  justify-content: space-between;
+  height: 100%;
+  justify-content: center;
   flex-direction: column;
-  height: 100vh;
   gap: 5px;
   padding: 10px;
+  box-sizing: border-box;
   transition: 0.3s
 }
 

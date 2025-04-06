@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: min(30vh, 400px);
+  min-height: min(30dvh, 400px);
   min-width: fit-content;
   border-radius: 15px;
   gap: 10px;
@@ -38,7 +38,7 @@
 @media only screen and (max-width: 600px) {
   .chat-form {
     min-width: 50vw;
-    min-height: 25vh;
+    min-height: 25%;
   }
 
   .chat-form>div {
@@ -48,7 +48,7 @@
 
 @media only screen and (max-height: 500px) {
   .chat-form {
-    min-height: 100vh;
+    min-height: 100%;
     min-width: 100vw;
     border-radius: 0px;
   }
