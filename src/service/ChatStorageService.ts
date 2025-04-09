@@ -1,7 +1,5 @@
+import { DB_NAME, STORE_NAME } from "../constants/db";
 import Message from "../interfaces/IMessage";
-
-const DB_NAME = "chat-media-db";
-const STORE_NAME = "media";
 
 export class ChatStorageService {
     private static listeners: ((messages: Message[]) => void)[] = [];

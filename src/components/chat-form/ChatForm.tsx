@@ -1,4 +1,5 @@
 import { useChat } from "../../hooks/useChat";
+import { SessionService } from "../../service/SessionService";
 import { getRandomColor } from "../../utils/getRandomColor";
 import LoginInput from "../ui/login-input/LoginInput";
 import styles from "./chat-form.module.css";
@@ -18,6 +19,8 @@ const ChatForm: React.FC<ChatFormProps> = ({ setIsInChat }) => {
 
     const color = getRandomColor(username);
     setColor(color);
+
+    SessionService.saveSession(username, room, color);
 
     setIsInChat(true);
   };

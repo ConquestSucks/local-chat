@@ -5,7 +5,11 @@ import { useChatRoom } from "../../hooks/useChatRoom";
 import styles from "./room.module.css";
 import DisplayRoomData from "../display-room-data/DisplayRoomData";
 
-const Room: React.FC = () => {
+interface RoomProps {
+  onExit: () => void;
+}
+
+const Room: React.FC<RoomProps> = ({ onExit }) => {
   const { username, room, color } = useChat();
   const { messages, sendMessage, replyTo, setReplyTo } = useChatRoom(
     username,
@@ -28,6 +32,7 @@ const Room: React.FC = () => {
         setReplyTo={setReplyTo}
         messagesEndRef={messagesEndRef}
         currentUser={username}
+        onExit={onExit}
       />
       <MessageInput
         sendMessage={sendMessage}

@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
+import { SessionService } from "../service/SessionService";
 
 export interface ChatContextType {
   room: string;
@@ -16,13 +17,30 @@ export const ChatContext = createContext<ChatContextType | undefined>(
 export const ChatProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [room, setRoom] = useState("");
-  const [username, setUsername] = useState("");
-  const [color, setColor] = useState("");
+  const session = SessionService.loadSession();
+
+  const [username, setUsernameState] = useState(session.username);
+  const [room, setRoomState] = useState(session.room);
+  const [color, setColorState] = useState(session.color);
+
+  const setUsername = (name: string) => {
+    setUsernameState(name);
+    sessionStorage.setItem("username", name);
+  };
+
+  const setRoom = (room: string) => {
+    setRoomState(room);
+    sessionStorage.setItem("room", room);
+  };
+
+  const setColor = (color: string) => {
+    setColorState(color);
+    sessionStorage.setItem("color", color);
+  };
 
   return (
     <ChatContext.Provider
-      value={{ room, username, color, setColor, setRoom, setUsername }}
+      value={{ room, username, color, setColor, setRoom, setUsername  }}
     >
       {children}
     </ChatContext.Provider>

@@ -1,0 +1,21 @@
+.exit {
+    max-width: 30px;
+    max-height: 30px;
+    stroke: #757575;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.exit:hover {
+    stroke: white;
+}
+
+@media (prefers-color-scheme: light) {
+    .exit {
+        stroke: #D9EAFD;
+    }
+
+    .exit:hover {
+        stroke: white;
+    }
+}
